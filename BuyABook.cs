@@ -21,5 +21,10 @@ namespace CIS560BookStore
             this.Hide();
             mainPage.ShowDialog();
         }
+
+        private void BuyABook_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
