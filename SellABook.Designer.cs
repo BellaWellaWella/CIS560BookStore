@@ -297,7 +297,7 @@ namespace CIS560BookStore
             this.button_SubmitSale.Name = "button_SubmitSale";
             this.button_SubmitSale.Size = new System.Drawing.Size(121, 42);
             this.button_SubmitSale.TabIndex = 25;
-            this.button_SubmitSale.Text = "Submit";
+            this.button_SubmitSale.Text = "Sell Book";
             this.button_SubmitSale.UseVisualStyleBackColor = true;
             // 
             // SellABook
@@ -332,7 +332,7 @@ namespace CIS560BookStore
             this.Controls.Add(this.textBox_name);
             this.Controls.Add(this.button_home);
             this.Name = "SellABook";
-            this.Text = "SellABook";
+            this.Text = "Sell A Book";
             this.ResumeLayout(false);
             this.PerformLayout();
 
