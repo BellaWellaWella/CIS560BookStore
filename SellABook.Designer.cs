@@ -48,20 +48,20 @@ namespace CIS560BookStore
             this.textBox_ISBN = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.textBox_yearPublished = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBox_Genre = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.textBox_bookPrice = new System.Windows.Forms.TextBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.combo_Condition = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
             this.button_SubmitSale = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button_home
             // 
-            this.button_home.Location = new System.Drawing.Point(12, 12);
+            this.button_home.Location = new System.Drawing.Point(10, 10);
             this.button_home.Name = "button_home";
-            this.button_home.Size = new System.Drawing.Size(75, 38);
+            this.button_home.Size = new System.Drawing.Size(64, 33);
             this.button_home.TabIndex = 0;
             this.button_home.Text = "Home";
             this.button_home.UseVisualStyleBackColor = true;
@@ -69,58 +69,58 @@ namespace CIS560BookStore
             // 
             // textBox_name
             // 
-            this.textBox_name.Location = new System.Drawing.Point(48, 162);
+            this.textBox_name.Location = new System.Drawing.Point(41, 140);
             this.textBox_name.Name = "textBox_name";
-            this.textBox_name.Size = new System.Drawing.Size(151, 23);
+            this.textBox_name.Size = new System.Drawing.Size(130, 20);
             this.textBox_name.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(48, 129);
+            this.label1.Location = new System.Drawing.Point(41, 112);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(42, 15);
+            this.label1.Size = new System.Drawing.Size(38, 13);
             this.label1.TabIndex = 2;
             this.label1.Text = "Name:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(48, 210);
+            this.label2.Location = new System.Drawing.Point(41, 182);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(52, 15);
+            this.label2.Size = new System.Drawing.Size(48, 13);
             this.label2.TabIndex = 4;
             this.label2.Text = "Address:";
             // 
             // textBox_address
             // 
-            this.textBox_address.Location = new System.Drawing.Point(48, 239);
+            this.textBox_address.Location = new System.Drawing.Point(41, 207);
             this.textBox_address.Name = "textBox_address";
-            this.textBox_address.Size = new System.Drawing.Size(151, 23);
+            this.textBox_address.Size = new System.Drawing.Size(130, 20);
             this.textBox_address.TabIndex = 3;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(48, 283);
+            this.label3.Location = new System.Drawing.Point(41, 245);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(39, 15);
+            this.label3.Size = new System.Drawing.Size(35, 13);
             this.label3.TabIndex = 6;
             this.label3.Text = "Email:";
             // 
             // textBox_email
             // 
-            this.textBox_email.Location = new System.Drawing.Point(48, 310);
+            this.textBox_email.Location = new System.Drawing.Point(41, 269);
             this.textBox_email.Name = "textBox_email";
-            this.textBox_email.Size = new System.Drawing.Size(151, 23);
+            this.textBox_email.Size = new System.Drawing.Size(130, 20);
             this.textBox_email.TabIndex = 5;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(48, 357);
+            this.label4.Location = new System.Drawing.Point(41, 309);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(81, 15);
+            this.label4.Size = new System.Drawing.Size(75, 13);
             this.label4.TabIndex = 7;
             this.label4.Text = "Supplier Type:";
             // 
@@ -130,17 +130,17 @@ namespace CIS560BookStore
             this.comboBox_supplierType.Items.AddRange(new object[] {
             "Individual",
             "Company"});
-            this.comboBox_supplierType.Location = new System.Drawing.Point(48, 386);
+            this.comboBox_supplierType.Location = new System.Drawing.Point(41, 335);
             this.comboBox_supplierType.Name = "comboBox_supplierType";
-            this.comboBox_supplierType.Size = new System.Drawing.Size(121, 23);
+            this.comboBox_supplierType.Size = new System.Drawing.Size(104, 21);
             this.comboBox_supplierType.TabIndex = 8;
             this.comboBox_supplierType.SelectedIndexChanged += new System.EventHandler(this.comboBox_supplierType_SelectedIndexChanged);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(281, 83);
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold);
+            this.label5.Location = new System.Drawing.Point(241, 72);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(189, 30);
             this.label5.TabIndex = 9;
@@ -149,8 +149,8 @@ namespace CIS560BookStore
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label6.Location = new System.Drawing.Point(33, 83);
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold);
+            this.label6.Location = new System.Drawing.Point(28, 72);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(192, 30);
             this.label6.TabIndex = 10;
@@ -159,73 +159,73 @@ namespace CIS560BookStore
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(281, 129);
+            this.label7.Location = new System.Drawing.Point(241, 112);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(63, 15);
+            this.label7.Size = new System.Drawing.Size(58, 13);
             this.label7.TabIndex = 12;
             this.label7.Text = "Book Title:";
             this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // textBox_bookTitle
             // 
-            this.textBox_bookTitle.Location = new System.Drawing.Point(281, 162);
+            this.textBox_bookTitle.Location = new System.Drawing.Point(241, 140);
             this.textBox_bookTitle.Name = "textBox_bookTitle";
-            this.textBox_bookTitle.Size = new System.Drawing.Size(151, 23);
+            this.textBox_bookTitle.Size = new System.Drawing.Size(130, 20);
             this.textBox_bookTitle.TabIndex = 11;
             this.textBox_bookTitle.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(281, 210);
+            this.label8.Location = new System.Drawing.Point(241, 182);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(77, 15);
+            this.label8.Size = new System.Drawing.Size(69, 13);
             this.label8.TabIndex = 14;
             this.label8.Text = "Book Author:";
             // 
             // textBox_bookAuthor
             // 
-            this.textBox_bookAuthor.Location = new System.Drawing.Point(281, 239);
+            this.textBox_bookAuthor.Location = new System.Drawing.Point(241, 207);
             this.textBox_bookAuthor.Name = "textBox_bookAuthor";
-            this.textBox_bookAuthor.Size = new System.Drawing.Size(151, 23);
+            this.textBox_bookAuthor.Size = new System.Drawing.Size(130, 20);
             this.textBox_bookAuthor.TabIndex = 13;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(281, 281);
+            this.label9.Location = new System.Drawing.Point(241, 244);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(35, 15);
+            this.label9.Size = new System.Drawing.Size(35, 13);
             this.label9.TabIndex = 16;
             this.label9.Text = "ISBN:";
             // 
             // textBox_ISBN
             // 
-            this.textBox_ISBN.Location = new System.Drawing.Point(281, 310);
+            this.textBox_ISBN.Location = new System.Drawing.Point(241, 269);
             this.textBox_ISBN.Name = "textBox_ISBN";
-            this.textBox_ISBN.Size = new System.Drawing.Size(151, 23);
+            this.textBox_ISBN.Size = new System.Drawing.Size(130, 20);
             this.textBox_ISBN.TabIndex = 15;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(281, 357);
+            this.label10.Location = new System.Drawing.Point(241, 309);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(87, 15);
+            this.label10.Size = new System.Drawing.Size(81, 13);
             this.label10.TabIndex = 18;
             this.label10.Text = "Year Published:";
             // 
             // textBox_yearPublished
             // 
-            this.textBox_yearPublished.Location = new System.Drawing.Point(281, 386);
+            this.textBox_yearPublished.Location = new System.Drawing.Point(241, 335);
             this.textBox_yearPublished.Name = "textBox_yearPublished";
-            this.textBox_yearPublished.Size = new System.Drawing.Size(151, 23);
+            this.textBox_yearPublished.Size = new System.Drawing.Size(130, 20);
             this.textBox_yearPublished.TabIndex = 17;
             // 
-            // comboBox1
+            // comboBox_Genre
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.comboBox_Genre.FormattingEnabled = true;
+            this.comboBox_Genre.Items.AddRange(new object[] {
             "Fantasy",
             "Horror",
             "Science Fiction",
@@ -241,76 +241,77 @@ namespace CIS560BookStore
             "Action",
             "Comic Book",
             "Other"});
-            this.comboBox1.Location = new System.Drawing.Point(514, 162);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 23);
-            this.comboBox1.TabIndex = 20;
+            this.comboBox_Genre.Location = new System.Drawing.Point(441, 140);
+            this.comboBox_Genre.Name = "comboBox_Genre";
+            this.comboBox_Genre.Size = new System.Drawing.Size(104, 21);
+            this.comboBox_Genre.TabIndex = 20;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(514, 133);
+            this.label11.Location = new System.Drawing.Point(441, 115);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(41, 15);
+            this.label11.Size = new System.Drawing.Size(39, 13);
             this.label11.TabIndex = 19;
             this.label11.Text = "Genre:";
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(514, 210);
+            this.label12.Location = new System.Drawing.Point(441, 182);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(66, 15);
+            this.label12.Size = new System.Drawing.Size(62, 13);
             this.label12.TabIndex = 22;
             this.label12.Text = "Book Price:";
             // 
             // textBox_bookPrice
             // 
-            this.textBox_bookPrice.Location = new System.Drawing.Point(514, 239);
+            this.textBox_bookPrice.Location = new System.Drawing.Point(441, 207);
             this.textBox_bookPrice.Name = "textBox_bookPrice";
-            this.textBox_bookPrice.Size = new System.Drawing.Size(151, 23);
+            this.textBox_bookPrice.Size = new System.Drawing.Size(130, 20);
             this.textBox_bookPrice.TabIndex = 21;
             // 
-            // comboBox2
+            // combo_Condition
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
+            this.combo_Condition.FormattingEnabled = true;
+            this.combo_Condition.Items.AddRange(new object[] {
             "New",
             "Used"});
-            this.comboBox2.Location = new System.Drawing.Point(514, 310);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 23);
-            this.comboBox2.TabIndex = 24;
+            this.combo_Condition.Location = new System.Drawing.Point(441, 269);
+            this.combo_Condition.Name = "combo_Condition";
+            this.combo_Condition.Size = new System.Drawing.Size(104, 21);
+            this.combo_Condition.TabIndex = 24;
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(514, 281);
+            this.label13.Location = new System.Drawing.Point(441, 244);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(63, 15);
+            this.label13.Size = new System.Drawing.Size(54, 13);
             this.label13.TabIndex = 23;
             this.label13.Text = "Condition:";
             // 
             // button_SubmitSale
             // 
-            this.button_SubmitSale.Location = new System.Drawing.Point(596, 375);
+            this.button_SubmitSale.Location = new System.Drawing.Point(511, 325);
             this.button_SubmitSale.Name = "button_SubmitSale";
-            this.button_SubmitSale.Size = new System.Drawing.Size(121, 42);
+            this.button_SubmitSale.Size = new System.Drawing.Size(104, 36);
             this.button_SubmitSale.TabIndex = 25;
             this.button_SubmitSale.Text = "Sell Book";
             this.button_SubmitSale.UseVisualStyleBackColor = true;
+            this.button_SubmitSale.Click += new System.EventHandler(this.button_SubmitSale_Click);
             // 
             // SellABook
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(686, 390);
             this.Controls.Add(this.button_SubmitSale);
-            this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.combo_Condition);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.textBox_bookPrice);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.comboBox_Genre);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.textBox_yearPublished);
@@ -359,11 +360,11 @@ namespace CIS560BookStore
         private System.Windows.Forms.TextBox textBox_ISBN;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox textBox_yearPublished;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBox_Genre;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox textBox_bookPrice;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox combo_Condition;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Button button_SubmitSale;
     }
