@@ -1,5 +1,15 @@
---CREATE DATABASE BookShop;
-
+USE BookShop;
+drop SCHEMA if exists Book;
+GO
+CREATE SCHEMA Book ;
+GO
+DROP TABLE IF EXISTS BookForSale
+DROP TABLE IF EXISTS Book
+DROP TABLE IF EXISTS Genre
+DROP TABLE IF EXISTS Buyer
+DROP TABLE IF EXISTS Sales
+DROP TABLE IF EXISTS Condition
+DROP TABLE IF EXISTS Supplier
 --Genre Table
 DROP TABLE IF EXISTS Genre
 
@@ -25,8 +35,7 @@ CREATE TABLE Book (BookID INT NOT NULL IDENTITY(1, 1) PRIMARY KEY,
 				   FOREIGN KEY(GenreID) REFERENCES Genre(GenreID)
 				   );
 
-INSERT Book(Title, Author, ISBN, YearPublished, GenreID)
-VALUES ;
+
 
 
 --Supplier Table
@@ -174,8 +183,7 @@ CREATE TABLE BookForSale (
 				   FOREIGN KEY(ConditionID) REFERENCES Condition(ConditionID)
 				   );
 
-INSERT BookForSale(BookID, SupplierID, Price, ConditionID, Avalible)
-VALUES ;
+
 
 --Buyer Table
 DROP TABLE IF EXISTS Buyer
@@ -353,6 +361,3 @@ CREATE TABLE Sales (
 				   FOREIGN KEY(BuyerID) REFERENCES Buyer(BuyerID),
 				   FOREIGN KEY(BookForSaleID) REFERENCES BookForSale(BookForSaleID)
 				   );
-
-INSERT BookForSale(BookID, SupplierID, Price, ConditionID, Avalible)
-VALUES ;

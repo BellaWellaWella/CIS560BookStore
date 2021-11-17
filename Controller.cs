@@ -14,6 +14,12 @@ namespace CIS560BookStore
     }
     public class Controller
     {
+        Model M;
+        public Controller()
+        {
+            M = new Model(@"Server=(localdb)\MSSQLLocalDb;Database=BookShop;Integrated Security=SSPI;");
+            List <Buyer> X = M.RetrieveBuyer();
+        }
         public void buy() { }
         public void Sell(Supplier s, Book b) { }
 

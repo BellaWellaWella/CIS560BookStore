@@ -34,11 +34,7 @@ namespace CIS560BookStore
         }
         private void button_buyBook_Click(object sender, EventArgs e)
         {
-            Buyer b = new Buyer();
-            b.buyerAddress = textBox_address.Text;
-            b.buyerEmail = textBox_email.Text;
-            b.buyerName = textBox_name.Text;
-            b.book = (Book)listBox_books.SelectedItem;
+
         }
     }
 }

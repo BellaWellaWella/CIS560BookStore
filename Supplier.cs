@@ -8,7 +8,7 @@ namespace CIS560BookStore
 {
     public class Supplier
     {
-        public string supplierName { get;set }
+        public string supplierName { get; set; }
         public string supplierAddress { get; set; }
         public string supplierEmail { get; set; }
         public string supplierType { get; set; }
