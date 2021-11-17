@@ -29,6 +29,7 @@ namespace CIS560BookStore
                 }
             }
         }
+
         public List<Buyer> TranslateReader(SqlDataReader reader)
         {
             var Buyer = new List<Buyer>();
@@ -44,6 +45,46 @@ namespace CIS560BookStore
                     reader.GetString(getEmail)));
             }
             return Buyer;
+        }
+
+        public List<Book> RetrieveBooKForSales()
+        {
+            using (var connections = new SqlConnection(connection))
+            {
+                using (var command = new SqlCommand("RetrieveBooKForSales", connections))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    connections.Open();
+                    using (var reader = command.ExecuteReader())
+                        return TranslateForSales(reader);
+                }
+            }
+        }
+        public List<Book> TranslateForSales(SqlDataReader reader)
+        {
+            var Books = new List<Book>();
+            var getBookForSaleID = reader.GetOrdinal("BookForSaleID");
+            var getTitle = reader.GetOrdinal("Title");
+            var getAuthor = reader.GetOrdinal("Author");
+            var getYearPublished = reader.GetOrdinal("YearPublished");
+            var getPrice = reader.GetOrdinal("Price");
+            var getISBN = reader.GetOrdinal("ISBN");
+            var getGenre = reader.GetOrdinal("Genre");
+            var getCondition = reader.GetOrdinal("Condition");
+            while (reader.Read())
+            {
+                Book book = new Book();
+                book.BookId = reader.GetInt32(getBookForSaleID);
+                book.Title = reader.GetString(getTitle);
+                book.Author = reader.GetString(getAuthor);
+                book.YearPublished = reader.GetInt32(getYearPublished);
+                book.price = reader.GetString(getPrice);
+                book.ISBN = reader.GetString(getISBN);
+                book.Genre = reader.GetString(getGenre);
+                book.condition = reader.GetString(getCondition);
+                Books.Add(book);
+            }
+            return Books;
         }
     }
 }

@@ -51,7 +51,7 @@ namespace CIS560BookStore
             b.ISBN = textBox_ISBN.Text;
             b.YearPublished = Int32.Parse(textBox_yearPublished.Text);
             b.Genre = comboBox_Genre.Text;
-            b.price = Convert.ToDouble(textBox_bookPrice.Text);
+            b.price = textBox_bookPrice.Text+"$";
             b.condition = combo_Condition.Text;
         }
     }

@@ -1,14 +1,11 @@
 USE BookShop;
-drop SCHEMA if exists Book;
-GO
-CREATE SCHEMA Book ;
-GO
-DROP TABLE IF EXISTS BookForSale
+
 DROP TABLE IF EXISTS Book
 DROP TABLE IF EXISTS Genre
 DROP TABLE IF EXISTS Buyer
 DROP TABLE IF EXISTS Sales
 DROP TABLE IF EXISTS Condition
+DROP TABLE IF EXISTS BookForSale
 DROP TABLE IF EXISTS Supplier
 --Genre Table
 DROP TABLE IF EXISTS Genre
@@ -35,8 +32,9 @@ CREATE TABLE Book (BookID INT NOT NULL IDENTITY(1, 1) PRIMARY KEY,
 				   FOREIGN KEY(GenreID) REFERENCES Genre(GenreID)
 				   );
 
-
-
+INSERT Book(Title,Author,ISBN,YearPublished,GenreID)
+VALUES (N'BookNameXYZ111',N'woziji',N'suibian',N'2021',N'3');
+SELECT * FROM Book;
 
 --Supplier Table
 --supplier type is either person or company
@@ -170,11 +168,12 @@ SELECT * FROM Condition;
 --Book For Sale Table
 DROP TABLE IF EXISTS BookForSale
 
+
 CREATE TABLE BookForSale (
 			       BookForSaleID INT NOT NULL IDENTITY(1, 1) PRIMARY KEY,
 				   BookID INT NOT NULL, 
 				   SupplierID INT NOT NULL, 
-				   Price INT NOT NULL, 
+				   Price NVARCHAR(64) NOT NULL, 
 				   ConditionID INT NOT NULL, 
 				   Avalible BIT NOT NULL, 
 				   
@@ -183,8 +182,9 @@ CREATE TABLE BookForSale (
 				   FOREIGN KEY(ConditionID) REFERENCES Condition(ConditionID)
 				   );
 
-
-
+INSERT BookForSale(BookID,SupplierID,Price,ConditionID,Avalible)
+VALUES(N'1',N'1',N'12.99$',N'1',N'1');
+SELECT * FROM BookForSale;
 --Buyer Table
 DROP TABLE IF EXISTS Buyer
 
