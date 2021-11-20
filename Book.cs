@@ -16,5 +16,6 @@ namespace CIS560BookStore
         public string Genre { get; set; }
         public string price { get; set; }
         public string condition { get; set; }
+        public Supplier supplier { get; set; }
     }
 }

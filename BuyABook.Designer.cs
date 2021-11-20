@@ -39,8 +39,6 @@ namespace CIS560BookStore
             this.label4 = new System.Windows.Forms.Label();
             this.textBox_name = new System.Windows.Forms.TextBox();
             this.button_buyBook = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label_bookSelected = new System.Windows.Forms.Label();
             this.listView1 = new System.Windows.Forms.ListView();
             this.Book_SaleID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Book_Title = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -50,6 +48,16 @@ namespace CIS560BookStore
             this.Book_ISBN = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Book_Genre = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Book_Condition = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.label7 = new System.Windows.Forms.Label();
+            this.textBox_Search = new System.Windows.Forms.TextBox();
+            this.button_Search = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.textBox_SupplierName = new System.Windows.Forms.TextBox();
+            this.textBox_SupplierEmail = new System.Windows.Forms.TextBox();
+            this.textBox_SupplierType = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // button_home
@@ -76,7 +84,7 @@ namespace CIS560BookStore
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold);
-            this.label6.Location = new System.Drawing.Point(689, 71);
+            this.label6.Location = new System.Drawing.Point(983, 71);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(194, 30);
             this.label6.TabIndex = 17;
@@ -85,7 +93,7 @@ namespace CIS560BookStore
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(701, 231);
+            this.label3.Location = new System.Drawing.Point(995, 231);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(41, 12);
             this.label3.TabIndex = 16;
@@ -93,7 +101,7 @@ namespace CIS560BookStore
             // 
             // textBox_email
             // 
-            this.textBox_email.Location = new System.Drawing.Point(701, 252);
+            this.textBox_email.Location = new System.Drawing.Point(995, 252);
             this.textBox_email.Name = "textBox_email";
             this.textBox_email.Size = new System.Drawing.Size(130, 21);
             this.textBox_email.TabIndex = 15;
@@ -101,7 +109,7 @@ namespace CIS560BookStore
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(701, 173);
+            this.label2.Location = new System.Drawing.Point(995, 173);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 12);
             this.label2.TabIndex = 14;
@@ -109,7 +117,7 @@ namespace CIS560BookStore
             // 
             // textBox_address
             // 
-            this.textBox_address.Location = new System.Drawing.Point(701, 196);
+            this.textBox_address.Location = new System.Drawing.Point(995, 196);
             this.textBox_address.Name = "textBox_address";
             this.textBox_address.Size = new System.Drawing.Size(130, 21);
             this.textBox_address.TabIndex = 13;
@@ -117,7 +125,7 @@ namespace CIS560BookStore
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(701, 108);
+            this.label4.Location = new System.Drawing.Point(995, 108);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(35, 12);
             this.label4.TabIndex = 12;
@@ -125,38 +133,20 @@ namespace CIS560BookStore
             // 
             // textBox_name
             // 
-            this.textBox_name.Location = new System.Drawing.Point(701, 134);
+            this.textBox_name.Location = new System.Drawing.Point(995, 134);
             this.textBox_name.Name = "textBox_name";
             this.textBox_name.Size = new System.Drawing.Size(130, 21);
             this.textBox_name.TabIndex = 11;
             // 
             // button_buyBook
             // 
-            this.button_buyBook.Location = new System.Drawing.Point(854, 296);
+            this.button_buyBook.Location = new System.Drawing.Point(995, 296);
             this.button_buyBook.Name = "button_buyBook";
             this.button_buyBook.Size = new System.Drawing.Size(133, 41);
             this.button_buyBook.TabIndex = 18;
             this.button_buyBook.Text = "Buy Book";
             this.button_buyBook.UseVisualStyleBackColor = true;
             this.button_buyBook.Click += new System.EventHandler(this.button_buyBook_Click);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(852, 231);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(89, 12);
-            this.label5.TabIndex = 19;
-            this.label5.Text = "Selected Book:";
-            // 
-            // label_bookSelected
-            // 
-            this.label_bookSelected.AutoSize = true;
-            this.label_bookSelected.Location = new System.Drawing.Point(852, 261);
-            this.label_bookSelected.Name = "label_bookSelected";
-            this.label_bookSelected.Size = new System.Drawing.Size(29, 12);
-            this.label_bookSelected.TabIndex = 20;
-            this.label_bookSelected.Text = "temp";
             // 
             // listView1
             // 
@@ -178,6 +168,7 @@ namespace CIS560BookStore
             this.listView1.TabIndex = 21;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
+            this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
             // 
             // Book_SaleID
             // 
@@ -218,14 +209,109 @@ namespace CIS560BookStore
             this.Book_Condition.Text = "Condition";
             this.Book_Condition.Width = 77;
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(203, 18);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(95, 12);
+            this.label7.TabIndex = 22;
+            this.label7.Text = "Search by Title";
+            // 
+            // textBox_Search
+            // 
+            this.textBox_Search.Location = new System.Drawing.Point(304, 15);
+            this.textBox_Search.Name = "textBox_Search";
+            this.textBox_Search.Size = new System.Drawing.Size(120, 21);
+            this.textBox_Search.TabIndex = 23;
+            // 
+            // button_Search
+            // 
+            this.button_Search.Location = new System.Drawing.Point(445, 13);
+            this.button_Search.Name = "button_Search";
+            this.button_Search.Size = new System.Drawing.Size(75, 23);
+            this.button_Search.TabIndex = 24;
+            this.button_Search.Text = "Search";
+            this.button_Search.UseVisualStyleBackColor = true;
+            this.button_Search.Click += new System.EventHandler(this.button_Search_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold);
+            this.label8.Location = new System.Drawing.Point(697, 71);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(220, 30);
+            this.label8.TabIndex = 26;
+            this.label8.Text = "Supplier Information";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(700, 108);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(35, 12);
+            this.label5.TabIndex = 27;
+            this.label5.Text = "Name:";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(700, 173);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(41, 12);
+            this.label9.TabIndex = 28;
+            this.label9.Text = "Email:";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(700, 231);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(83, 12);
+            this.label10.TabIndex = 29;
+            this.label10.Text = "SupplierType:";
+            // 
+            // textBox_SupplierName
+            // 
+            this.textBox_SupplierName.Location = new System.Drawing.Point(702, 133);
+            this.textBox_SupplierName.Name = "textBox_SupplierName";
+            this.textBox_SupplierName.ReadOnly = true;
+            this.textBox_SupplierName.Size = new System.Drawing.Size(165, 21);
+            this.textBox_SupplierName.TabIndex = 30;
+            // 
+            // textBox_SupplierEmail
+            // 
+            this.textBox_SupplierEmail.Location = new System.Drawing.Point(702, 196);
+            this.textBox_SupplierEmail.Name = "textBox_SupplierEmail";
+            this.textBox_SupplierEmail.ReadOnly = true;
+            this.textBox_SupplierEmail.Size = new System.Drawing.Size(165, 21);
+            this.textBox_SupplierEmail.TabIndex = 31;
+            // 
+            // textBox_SupplierType
+            // 
+            this.textBox_SupplierType.Location = new System.Drawing.Point(702, 252);
+            this.textBox_SupplierType.Name = "textBox_SupplierType";
+            this.textBox_SupplierType.ReadOnly = true;
+            this.textBox_SupplierType.Size = new System.Drawing.Size(165, 21);
+            this.textBox_SupplierType.TabIndex = 32;
+            // 
             // BuyABook
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1028, 360);
-            this.Controls.Add(this.listView1);
-            this.Controls.Add(this.label_bookSelected);
+            this.ClientSize = new System.Drawing.Size(1250, 360);
+            this.Controls.Add(this.textBox_SupplierType);
+            this.Controls.Add(this.textBox_SupplierEmail);
+            this.Controls.Add(this.textBox_SupplierName);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.label5);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.button_Search);
+            this.Controls.Add(this.textBox_Search);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.listView1);
             this.Controls.Add(this.button_buyBook);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label3);
@@ -256,8 +342,6 @@ namespace CIS560BookStore
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textBox_name;
         private System.Windows.Forms.Button button_buyBook;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label_bookSelected;
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.ColumnHeader Book_SaleID;
         private System.Windows.Forms.ColumnHeader Book_Title;
@@ -267,5 +351,15 @@ namespace CIS560BookStore
         private System.Windows.Forms.ColumnHeader Book_ISBN;
         private System.Windows.Forms.ColumnHeader Book_Genre;
         private System.Windows.Forms.ColumnHeader Book_Condition;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox textBox_Search;
+        private System.Windows.Forms.Button button_Search;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox textBox_SupplierName;
+        private System.Windows.Forms.TextBox textBox_SupplierEmail;
+        private System.Windows.Forms.TextBox textBox_SupplierType;
     }
 }

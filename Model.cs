@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data;
+using System.Transactions;
+using System.Windows.Forms;
 
 
 namespace CIS560BookStore
@@ -16,37 +15,35 @@ namespace CIS560BookStore
         {
             this.connection = connection;
         }
-        public List<Buyer> RetrieveBuyer()
+        public List<Book> CreateASale(string Name, string Email, string Address, int BookId)
         {
-            using(var connections = new SqlConnection(connection))
+            using (var transaction = new TransactionScope())
             {
-                using(var command = new SqlCommand("RetrieveBuyer", connections))
+                using (var connections = new SqlConnection(connection))
                 {
-                    command.CommandType = CommandType.StoredProcedure;
-                    connections.Open();
-                    using(var reader = command.ExecuteReader())
-                        return TranslateReader(reader);
+                    using (var command = new SqlCommand("CreateASale", connections))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.AddWithValue("Name", Name);
+                        command.Parameters.AddWithValue("Email", Email);
+                        command.Parameters.AddWithValue("Address", Address);
+                        command.Parameters.AddWithValue("BookID", BookId);
+                        connections.Open();
+                        try
+                        {
+                            command.ExecuteNonQuery();
+                            transaction.Complete();
+                        }
+                        catch (Exception e)
+                        {
+                            MessageBox.Show("The Email already used");
+                            return new List<Book>();
+                        }
+                    }
                 }
             }
+            return RetrieveBooKForSales();
         }
-
-        public List<Buyer> TranslateReader(SqlDataReader reader)
-        {
-            var Buyer = new List<Buyer>();
-            var getBuyerID = reader.GetOrdinal("BuyerID");
-            var getName = reader.GetOrdinal("Name");
-            var getAddress = reader.GetOrdinal("Address");
-            var getEmail = reader.GetOrdinal("Email");
-            while (reader.Read())
-            {
-                Buyer.Add(new Buyer(reader.GetInt32(getBuyerID),
-                    reader.GetString(getName),
-                    reader.GetString(getAddress),
-                    reader.GetString(getEmail)));
-            }
-            return Buyer;
-        }
-
         public List<Book> RetrieveBooKForSales()
         {
             using (var connections = new SqlConnection(connection))
@@ -57,6 +54,31 @@ namespace CIS560BookStore
                     connections.Open();
                     using (var reader = command.ExecuteReader())
                         return TranslateForSales(reader);
+                }
+            }
+        }
+        public List<Book> SearchABook(string Title)
+        {
+            using (var connections = new SqlConnection(connection))
+            {
+                using (var command = new SqlCommand("SearchBook", connections))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("Title", Title);
+                    connections.Open();
+                    using (var reader = command.ExecuteReader())
+                    {
+                        try
+                        {
+                            List<Book> x = TranslateForSales(reader);
+                            return x;
+                        }
+                        catch (Exception e)
+                        {
+                            MessageBox.Show("Cannot find any book for sales");
+                            return new List<Book>();
+                        }
+                    }
                 }
             }
         }
@@ -71,6 +93,9 @@ namespace CIS560BookStore
             var getISBN = reader.GetOrdinal("ISBN");
             var getGenre = reader.GetOrdinal("Genre");
             var getCondition = reader.GetOrdinal("Condition");
+            var getSupplierName = reader.GetOrdinal("Name");
+            var getSupplierEmail = reader.GetOrdinal("Email");
+            var getSupplierType = reader.GetOrdinal("SupplierType");
             while (reader.Read())
             {
                 Book book = new Book();
@@ -82,6 +107,11 @@ namespace CIS560BookStore
                 book.ISBN = reader.GetString(getISBN);
                 book.Genre = reader.GetString(getGenre);
                 book.condition = reader.GetString(getCondition);
+                Supplier s = new Supplier();
+                s.supplierName = reader.GetString(getSupplierName);
+                s.supplierEmail = reader.GetString(getSupplierEmail);
+                s.supplierType = reader.GetString(getSupplierType);
+                book.supplier = s;
                 Books.Add(book);
             }
             return Books;

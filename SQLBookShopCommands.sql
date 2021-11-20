@@ -33,7 +33,8 @@ CREATE TABLE Book (BookID INT NOT NULL IDENTITY(1, 1) PRIMARY KEY,
 				   );
 
 INSERT Book(Title,Author,ISBN,YearPublished,GenreID)
-VALUES (N'BookNameXYZ111',N'woziji',N'suibian',N'2021',N'3');
+VALUES (N'BookNameXYZ111',N'woziji',N'suibian',N'2021',N'3'),
+	   (N'NameXYZ133',N'w31i',N'suagfan',N'1021',N'7');
 SELECT * FROM Book;
 
 --Supplier Table
@@ -183,7 +184,9 @@ CREATE TABLE BookForSale (
 				   );
 
 INSERT BookForSale(BookID,SupplierID,Price,ConditionID,Avalible)
-VALUES(N'1',N'1',N'12.99$',N'1',N'1');
+VALUES
+(N'1',N'1',N'12.99$',N'1',N'1'),
+(N'2',N'6',N'16.99$',N'2',N'1');
 SELECT * FROM BookForSale;
 --Buyer Table
 DROP TABLE IF EXISTS Buyer
@@ -356,7 +359,7 @@ CREATE TABLE Sales (
 			       OrderID INT NOT NULL IDENTITY(1, 1) PRIMARY KEY,
 				   BuyerID INT NOT NULL, 
 				   BookForSaleID INT NOT NULL, 
-				   DatePurchased DATETIMEOFFSET NOT NULL,
+				   DatePurchased DATETIMEOFFSET NOT NULL DEFAULT(SYSDATETIMEOFFSET()),
 				   
 				   FOREIGN KEY(BuyerID) REFERENCES Buyer(BuyerID),
 				   FOREIGN KEY(BookForSaleID) REFERENCES BookForSale(BookForSaleID)

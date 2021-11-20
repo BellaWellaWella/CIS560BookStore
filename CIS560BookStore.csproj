@@ -6,4 +6,8 @@
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Reference Include="System.Transactions" />
+  </ItemGroup>
+
 </Project>
