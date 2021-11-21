@@ -10,25 +10,56 @@ namespace CIS560BookStore
 {
     public class Model
     {
-        private string connection;
+        private string connectionString;
         public Model(string connection)
         {
-            this.connection = connection;
+            this.connectionString = connection;
+        }
+        public void SaleABook(Supplier s, Book b)
+        {
+            using (var transaction = new TransactionScope())
+            {
+                using (var connection = new SqlConnection(connectionString))
+                {
+                    using (var command = new SqlCommand("CreateASupplier", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.AddWithValue("Name", s.supplierName);
+                        command.Parameters.AddWithValue("Email", s.supplierEmail);
+                        command.Parameters.AddWithValue("Address", s.supplierAddress);
+                        command.Parameters.AddWithValue("SupplierType",s.supplierType);
+                        command.Parameters.AddWithValue("Title", b.Title);
+                        command.Parameters.AddWithValue("Author", b.Author);
+                        command.Parameters.AddWithValue("ISBN", b.ISBN);
+                        command.Parameters.AddWithValue("YearPublished", b.YearPublished);
+                        command.Parameters.AddWithValue("GenreID", b.GenreID);
+                        command.Parameters.AddWithValue("ConditionID", b.ConditionID);
+                        command.Parameters.AddWithValue("Price", b.price);
+                        command.Parameters.AddWithValue("Avalible", 1);
+
+                        connection.Open();
+
+                        command.ExecuteNonQuery();
+
+                        transaction.Complete();
+                    }
+                }
+            }
         }
         public List<Book> CreateASale(string Name, string Email, string Address, int BookId)
         {
             using (var transaction = new TransactionScope())
             {
-                using (var connections = new SqlConnection(connection))
+                using (var connection = new SqlConnection(connectionString))
                 {
-                    using (var command = new SqlCommand("CreateASale", connections))
+                    using (var command = new SqlCommand("CreateASale", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
                         command.Parameters.AddWithValue("Name", Name);
                         command.Parameters.AddWithValue("Email", Email);
                         command.Parameters.AddWithValue("Address", Address);
                         command.Parameters.AddWithValue("BookID", BookId);
-                        connections.Open();
+                        connection.Open();
                         try
                         {
                             command.ExecuteNonQuery();
@@ -46,12 +77,12 @@ namespace CIS560BookStore
         }
         public List<Book> RetrieveBooKForSales()
         {
-            using (var connections = new SqlConnection(connection))
+            using (var connection = new SqlConnection(connectionString))
             {
-                using (var command = new SqlCommand("RetrieveBooKForSales", connections))
+                using (var command = new SqlCommand("RetrieveBooKForSales", connection))
                 {
                     command.CommandType = CommandType.StoredProcedure;
-                    connections.Open();
+                    connection.Open();
                     using (var reader = command.ExecuteReader())
                         return TranslateForSales(reader);
                 }
@@ -59,13 +90,13 @@ namespace CIS560BookStore
         }
         public List<Book> SearchABook(string Title)
         {
-            using (var connections = new SqlConnection(connection))
+            using (var connection = new SqlConnection(connectionString))
             {
-                using (var command = new SqlCommand("SearchBook", connections))
+                using (var command = new SqlCommand("SearchBook", connection))
                 {
                     command.CommandType = CommandType.StoredProcedure;
                     command.Parameters.AddWithValue("Title", Title);
-                    connections.Open();
+                    connection.Open();
                     using (var reader = command.ExecuteReader())
                     {
                         try
@@ -106,7 +137,7 @@ namespace CIS560BookStore
                 book.price = reader.GetString(getPrice);
                 book.ISBN = reader.GetString(getISBN);
                 book.Genre = reader.GetString(getGenre);
-                book.condition = reader.GetString(getCondition);
+                book.Condition = reader.GetString(getCondition);
                 Supplier s = new Supplier();
                 s.supplierName = reader.GetString(getSupplierName);
                 s.supplierEmail = reader.GetString(getSupplierEmail);

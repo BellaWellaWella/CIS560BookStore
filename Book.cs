@@ -14,8 +14,10 @@ namespace CIS560BookStore
         public string ISBN { get; set; }
         public int YearPublished { get; set; }
         public string Genre { get; set; }
+        public int GenreID { get; set; }
         public string price { get; set; }
-        public string condition { get; set; }
+        public string Condition { get; set; }
+        public int ConditionID { get; set; }
         public Supplier supplier { get; set; }
     }
 }

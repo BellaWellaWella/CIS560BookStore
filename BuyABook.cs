@@ -27,7 +27,7 @@ namespace CIS560BookStore
         {
             foreach (Book b in x)
             {
-                var row = new string[] { b.BookId.ToString(), b.Title, b.Author, b.YearPublished.ToString(), b.price, b.ISBN, b.Genre, b.condition };
+                var row = new string[] { b.BookId.ToString(), b.Title, b.Author, b.YearPublished.ToString(), b.price, b.ISBN, b.Genre, b.Condition };
                 var lvi = new ListViewItem(row);
                 listView1.Items.Add(lvi);
             }

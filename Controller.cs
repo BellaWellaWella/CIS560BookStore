@@ -26,7 +26,10 @@ namespace CIS560BookStore
         {
             return M.CreateASale(Name,Email,Address,BookId);
         }
-        public void Sell(Supplier s, Book b) { }
+        public void Sell(Supplier s, Book b) 
+        {
+            M.SaleABook(s, b);
+        }
         public List<Book> searchBook(string name)
         {
             if(name != "")

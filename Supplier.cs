@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace CIS560BookStore
 {
+
     public class Supplier
     {
         public string supplierName { get; set; }

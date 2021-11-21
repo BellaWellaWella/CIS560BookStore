@@ -49,10 +49,11 @@ namespace CIS560BookStore
             b.Title = textBox_bookTitle.Text;
             b.Author = textBox_bookAuthor.Text;
             b.ISBN = textBox_ISBN.Text;
-            b.YearPublished = Int32.Parse(textBox_yearPublished.Text);
-            b.Genre = comboBox_Genre.Text;
+            b.YearPublished = Convert.ToInt32(textBox_yearPublished.Text);
+            b.GenreID = comboBox_Genre.SelectedIndex+1;
             b.price = textBox_bookPrice.Text+"$";
-            b.condition = combo_Condition.Text;
+            b.ConditionID = combo_Condition.SelectedIndex+1;
+            con.Sell(s, b);
         }
     }
 }
