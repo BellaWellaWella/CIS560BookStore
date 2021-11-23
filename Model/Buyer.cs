@@ -12,12 +12,5 @@ namespace CIS560BookStore
         public string buyerName { get; set; }
         public string buyerAddress { get; set; }
         public string buyerEmail { get; set; }
-        public Buyer(int buyerID,string buyername, string buyeraddress, string buyeremail)
-        {
-            BuyerID = buyerID;
-            buyerName = buyername;
-            buyerAddress = buyeraddress;
-            buyerEmail = buyeremail;
-        }
     }
 }

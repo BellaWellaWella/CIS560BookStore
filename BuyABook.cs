@@ -91,5 +91,11 @@ namespace CIS560BookStore
             }
             
         }
+
+        private void button_Edit_Click(object sender, EventArgs e)
+        {
+            EditOrder editOrder = new EditOrder(con, Order.buyer);
+            editOrder.Show();
+        }
     }
 }

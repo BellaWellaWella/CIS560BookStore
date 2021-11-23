@@ -58,6 +58,7 @@ namespace CIS560BookStore
             this.textBox_SupplierName = new System.Windows.Forms.TextBox();
             this.textBox_SupplierEmail = new System.Windows.Forms.TextBox();
             this.textBox_SupplierType = new System.Windows.Forms.TextBox();
+            this.button_Edit = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button_home
@@ -296,11 +297,22 @@ namespace CIS560BookStore
             this.textBox_SupplierType.Size = new System.Drawing.Size(165, 21);
             this.textBox_SupplierType.TabIndex = 32;
             // 
+            // button_Edit
+            // 
+            this.button_Edit.Location = new System.Drawing.Point(1119, 18);
+            this.button_Edit.Name = "button_Edit";
+            this.button_Edit.Size = new System.Drawing.Size(99, 30);
+            this.button_Edit.TabIndex = 33;
+            this.button_Edit.Text = "Edit Order";
+            this.button_Edit.UseVisualStyleBackColor = true;
+            this.button_Edit.Click += new System.EventHandler(this.button_Edit_Click);
+            // 
             // BuyABook
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1250, 360);
+            this.Controls.Add(this.button_Edit);
             this.Controls.Add(this.textBox_SupplierType);
             this.Controls.Add(this.textBox_SupplierEmail);
             this.Controls.Add(this.textBox_SupplierName);
@@ -361,5 +373,6 @@ namespace CIS560BookStore
         private System.Windows.Forms.TextBox textBox_SupplierName;
         private System.Windows.Forms.TextBox textBox_SupplierEmail;
         private System.Windows.Forms.TextBox textBox_SupplierType;
+        private System.Windows.Forms.Button button_Edit;
     }
 }

@@ -55,6 +55,7 @@ namespace CIS560BookStore
             this.combo_Condition = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
             this.button_SubmitSale = new System.Windows.Forms.Button();
+            this.button_Edit = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button_home
@@ -301,11 +302,22 @@ namespace CIS560BookStore
             this.button_SubmitSale.UseVisualStyleBackColor = true;
             this.button_SubmitSale.Click += new System.EventHandler(this.button_SubmitSale_Click);
             // 
+            // button_Edit
+            // 
+            this.button_Edit.Location = new System.Drawing.Point(443, 12);
+            this.button_Edit.Name = "button_Edit";
+            this.button_Edit.Size = new System.Drawing.Size(99, 30);
+            this.button_Edit.TabIndex = 26;
+            this.button_Edit.Text = "Edit Order";
+            this.button_Edit.UseVisualStyleBackColor = true;
+            this.button_Edit.Click += new System.EventHandler(this.button_Edit_Click);
+            // 
             // SellABook
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(686, 360);
+            this.ClientSize = new System.Drawing.Size(605, 359);
+            this.Controls.Add(this.button_Edit);
             this.Controls.Add(this.button_SubmitSale);
             this.Controls.Add(this.combo_Condition);
             this.Controls.Add(this.label13);
@@ -367,5 +379,6 @@ namespace CIS560BookStore
         private System.Windows.Forms.ComboBox combo_Condition;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Button button_SubmitSale;
+        private System.Windows.Forms.Button button_Edit;
     }
 }

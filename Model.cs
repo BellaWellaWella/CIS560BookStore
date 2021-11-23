@@ -15,6 +15,208 @@ namespace CIS560BookStore
         {
             this.connectionString = connection;
         }
+        public void UpdateBuyerinfo(Buyer b)
+        {
+            using (var transaction = new TransactionScope())
+            {
+                using (var connection = new SqlConnection(connectionString))
+                {
+                    using (var command = new SqlCommand("UpdateinfoForBuyer", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.AddWithValue("Email", b.buyerEmail);
+                        command.Parameters.AddWithValue("Name", b.buyerName);
+                        command.Parameters.AddWithValue("Address", b.buyerAddress);
+                        connection.Open();
+
+                        command.ExecuteNonQuery();
+
+                        transaction.Complete();
+
+                    }
+                }
+            }
+        }
+        public void CencelOerderBySupplier (int id, string email)
+        {
+            using (var transaction = new TransactionScope())
+            {
+                using (var connection = new SqlConnection(connectionString))
+                {
+                    using (var command = new SqlCommand("CancelBySupplier", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.AddWithValue("ID", id);
+                        command.Parameters.AddWithValue("Email", email);
+                        connection.Open();
+                        command.ExecuteNonQuery();
+                        transaction.Complete();
+                    }
+                }
+            }
+        }
+        public void CencelOrderByBuyer(int id)
+        {
+            using (var transaction = new TransactionScope())
+            {
+                using (var connection = new SqlConnection(connectionString))
+                {
+                    using (var command = new SqlCommand("CancelByBuyer", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.AddWithValue("ID", id);
+                        connection.Open();
+                        command.ExecuteNonQuery();
+                        transaction.Complete();
+                    }
+                }
+            }
+        }
+        public void UpdateSupplierinfo(Supplier s)
+        {
+            using (var transaction = new TransactionScope())
+            {
+                using (var connection = new SqlConnection(connectionString))
+                {
+                    using (var command = new SqlCommand("UpdateinfoForSupplier", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.AddWithValue("Email", s.supplierEmail);
+                        command.Parameters.AddWithValue("Name", s.supplierName);
+                        command.Parameters.AddWithValue("Address", s.supplierAddress);
+                        command.Parameters.AddWithValue("SupplierType", s.supplierType);
+                        connection.Open();
+
+                        command.ExecuteNonQuery();
+
+                        transaction.Complete();
+
+                    }
+                }
+            }
+        }
+        public Tuple<Buyer, List<Sales>> SearchBuyer(string Email)
+        {
+            List<Sales> sales = new List<Sales>();
+            Buyer b = new Buyer();
+            using (var transaction = new TransactionScope())
+            {
+                using (var connection = new SqlConnection(connectionString))
+                {
+                    using (var command = new SqlCommand("SearchBuyer", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.AddWithValue("Email", Email);
+                        connection.Open();
+                        using (var reader = command.ExecuteReader())
+                        {
+                            var getName = reader.GetOrdinal("Name");
+                            var getAddress = reader.GetOrdinal("Address");
+                            var getEmail = reader.GetOrdinal("Email");
+                            if (!reader.Read())
+                            {
+                                MessageBox.Show("Cannot find any Buyer For this Email");
+                                return new Tuple<Buyer, List<Sales>>(null, new List<Sales>());
+                            }
+                            b.buyerName = reader.GetString(getName);
+                            b.buyerAddress = reader.GetString(getAddress);
+                            b.buyerEmail = reader.GetString(getEmail);
+                        }
+                    }
+                    connection.Close();
+                    using (var command = new SqlCommand("SearchSalesForBuyer", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.AddWithValue("Email", Email);
+                        connection.Open();
+                        using (var reader = command.ExecuteReader())
+                        {
+                            var getEmail = reader.GetOrdinal("Email");
+                            var getAddress = reader.GetOrdinal("Address");
+                            var getType = reader.GetOrdinal("SupplierType");
+                            var getID = reader.GetOrdinal("BookForSaleID");
+                            var getTitle = reader.GetOrdinal("Title");
+                            var getAvalible = reader.GetOrdinal("Avalible");
+                            while (reader.Read())
+                            {
+                                Sales s = new Sales();
+                                s.SaleID = reader.GetInt32(getID);
+                                s.Title = reader.GetString(getTitle);
+                                s.Available = reader.GetInt32(getAvalible);
+                                Supplier sup = new Supplier();
+                                sup.supplierEmail = reader.IsDBNull(getEmail) ? null : reader.GetString(getEmail);
+                                sup.supplierAddress = reader.IsDBNull(getAddress) ? null : reader.GetString(getAddress);
+                                sup.supplierType = reader.IsDBNull(getType) ? null : reader.GetString(getType);
+                                s.supplier = sup;
+                                sales.Add(s);
+                            }
+                            return new Tuple<Buyer, List<Sales>>(b, sales);
+                        }
+                    }
+                }
+            }
+        }
+        public Tuple<Supplier, List<Sales>> SearchSupplier(string Email)
+        {
+            List<Sales> sales = new List<Sales>();
+            Supplier supp = new Supplier();
+            using (var transaction = new TransactionScope())
+            {
+                using (var connection = new SqlConnection(connectionString))
+                {
+                    using (var command = new SqlCommand("SearchSupplier", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.AddWithValue("Email", Email);
+                        connection.Open();
+                        using (var reader = command.ExecuteReader())
+                        {
+                            var getName = reader.GetOrdinal("Name");
+                            var getAddress = reader.GetOrdinal("Address");
+                            var getEmail = reader.GetOrdinal("Email");
+                            var getType = reader.GetOrdinal("SupplierType");
+                            if (!reader.Read())
+                            {
+                                MessageBox.Show("Cannot find any Supplier For this Email");
+                                return new Tuple<Supplier, List<Sales>>(null , new List<Sales>());
+                            }
+                            supp.supplierName = reader.GetString(getName);
+                            supp.supplierAddress = reader.GetString(getAddress);
+                            supp.supplierEmail = reader.GetString(getEmail);
+                            supp.supplierType = reader.GetString(getType);
+                        }
+                    }
+                    connection.Close();
+                    using (var command = new SqlCommand("SearchSalesForSupplier", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.AddWithValue("Email", Email);
+                        connection.Open();
+                        using (var reader = command.ExecuteReader())
+                        {
+                            var getEmail = reader.GetOrdinal("Email");
+                            var getAddress = reader.GetOrdinal("Address");
+                            var getID = reader.GetOrdinal("BookForSaleID");
+                            var getTitle = reader.GetOrdinal("Title");
+                            var getAvalible = reader.GetOrdinal("Avalible");
+                            while (reader.Read())
+                            {
+                                Sales s = new Sales();
+                                s.SaleID = reader.GetInt32(getID);
+                                s.Title = reader.GetString(getTitle);
+                                s.Available = reader.GetInt32(getAvalible);
+                                Buyer b = new Buyer();
+                                b.buyerEmail = reader.IsDBNull(getEmail) ? null : reader.GetString(getEmail);
+                                b.buyerAddress = reader.IsDBNull(getAddress) ? null : reader.GetString(getAddress);
+                                s.buyer = b;
+                                sales.Add(s);
+                            }
+                            return new Tuple<Supplier, List<Sales>>(supp, sales);
+                        }
+                    }
+                }
+            }
+        }
         public void SaleABook(Supplier s, Book b)
         {
             using (var transaction = new TransactionScope())

@@ -6,18 +6,47 @@ using System.Threading.Tasks;
 
 namespace CIS560BookStore
 {
-    public enum State
-    {
-        Buy,
-        Sell,
-        Search
-    }
     public class Controller
     {
         Model M;
         public Controller()
         {
             M = new Model(@"Server=(localdb)\MSSQLLocalDb;Database=BookShop;Integrated Security=SSPI;");
+        }
+        public Tuple<Buyer,Supplier, List<Sales>> Search(string Email,Order o)
+        {
+            if(o == Order.supplier)
+            {
+                Tuple<Supplier, List<Sales>>  t = M.SearchSupplier(Email);
+                return new Tuple<Buyer, Supplier, List<Sales>>(null, t.Item1, t.Item2);
+            }
+            else
+            {
+                Tuple<Buyer, List<Sales>> t = M.SearchBuyer(Email);
+                return new Tuple<Buyer, Supplier, List<Sales>>(t.Item1,null, t.Item2);
+            }
+        }
+        public void Editinfo(Buyer b, Supplier s, Order o)
+        {
+            if(o == Order.supplier)
+            {
+                M.UpdateSupplierinfo(s);
+            }
+            else
+            {
+                M.UpdateBuyerinfo(b);
+            }
+        }
+        public void CencelOrder(int id,string Email,Order o)
+        {
+            if (o == Order.supplier)
+            {
+                M.CencelOerderBySupplier(id, Email);
+            }
+            else
+            {
+                M.CencelOrderByBuyer(id);
+            }
         }
         public List<Book> buy() {
             return M.RetrieveBooKForSales();
