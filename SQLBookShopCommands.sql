@@ -176,7 +176,7 @@ CREATE TABLE BookForSale (
 				   SupplierID INT NOT NULL, 
 				   Price NVARCHAR(64) NOT NULL, 
 				   ConditionID INT NOT NULL, 
-				   Avalible BIT NOT NULL, 
+				   Avalible INT NOT NULL CHECK(Avalible Between 0 and 1), 
 				   
 				   FOREIGN KEY(BookID) REFERENCES Book(BookID),
 				   FOREIGN KEY(SupplierID) REFERENCES Supplier(SupplierID),
@@ -186,6 +186,7 @@ CREATE TABLE BookForSale (
 INSERT BookForSale(BookID,SupplierID,Price,ConditionID,Avalible)
 VALUES
 (N'1',N'1',N'12.99$',N'1',N'1'),
+(N'1',N'1',N'12.99$',N'2',N'1'),
 (N'2',N'6',N'16.99$',N'2',N'1');
 SELECT * FROM BookForSale;
 --Buyer Table

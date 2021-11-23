@@ -86,7 +86,7 @@ namespace CIS560BookStore
                         command.Parameters.AddWithValue("Address", s.supplierAddress);
                         command.Parameters.AddWithValue("SupplierType", s.supplierType);
                         connection.Open();
-
+                        
                         command.ExecuteNonQuery();
 
                         transaction.Complete();
