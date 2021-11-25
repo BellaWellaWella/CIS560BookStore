@@ -1,8 +1,7 @@
-CREATE OR ALTER PROCEDURE TopSuppiler
+CREATE OR ALTER PROCEDURE TopSupplier
 	@Month INT
 AS
-
-SELECT S.Name,ROW_NUMBER() OVER(ORDER BY COUNT(S.SupplierID) DESC)
+SELECT S.Name,ROW_NUMBER() OVER(ORDER BY SUM(BFS.Price) DESC)AS SalesRank, COUNT(S.SupplierID)AS SalesCount,SUM(BFS.Price) AS TotalSales
 FROM Supplier S
 INNER JOIN BookForSale BFS ON BFS.SupplierID = S.SupplierID
 INNER JOIN Sales Sa ON Sa.BookForSaleID = BFS.BookForSaleID
