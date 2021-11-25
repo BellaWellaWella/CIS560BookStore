@@ -336,7 +336,8 @@ namespace CIS560BookStore
                 book.Title = reader.GetString(getTitle);
                 book.Author = reader.GetString(getAuthor);
                 book.YearPublished = reader.GetInt32(getYearPublished);
-                book.price = reader.GetString(getPrice);
+                double x = reader.GetDouble(getPrice);
+                book.price = x.ToString("0.00$");   
                 book.ISBN = reader.GetString(getISBN);
                 book.Genre = reader.GetString(getGenre);
                 book.Condition = reader.GetString(getCondition);

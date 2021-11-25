@@ -31,7 +31,7 @@ CREATE TABLE BookForSale (
 			       BookForSaleID INT NOT NULL IDENTITY(1, 1) PRIMARY KEY,
 				   BookID INT NOT NULL, 
 				   SupplierID INT NOT NULL, 
-				   Price NVARCHAR(64) NOT NULL, 
+				   Price Float NOT NULL, 
 				   ConditionID INT NOT NULL, 
 				   Avalible INT NOT NULL CHECK(Avalible Between 0 and 1), 
 				   
