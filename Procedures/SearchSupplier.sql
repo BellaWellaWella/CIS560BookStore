@@ -4,3 +4,4 @@ AS
 SELECT *
 FROM Supplier S
 WHERE S.Email = @Email
+GO

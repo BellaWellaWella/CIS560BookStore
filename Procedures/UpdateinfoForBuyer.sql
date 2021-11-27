@@ -9,3 +9,4 @@ SET
 	Name = @Name,
 	Address = @Address
 WHERE Email = @Email
+GO

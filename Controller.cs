@@ -70,5 +70,17 @@ namespace CIS560BookStore
                 return M.RetrieveBooKForSales();
             }
         }
+        public List<string[]> TopBuyer()
+        {
+            return M.TopBuyer();
+        }
+        public List<string[]> PopularGenre()
+        {
+            return M.PopularGenre();
+        }
+        public List<string[]> TopSupplier()
+        {
+            return M.TopSupplier();
+        }
     }
 }

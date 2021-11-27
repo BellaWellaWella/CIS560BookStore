@@ -1,10 +1,10 @@
 CREATE OR ALTER PROCEDURE TopSupplier
-	@Month INT
 AS
-SELECT S.Name,ROW_NUMBER() OVER(ORDER BY SUM(BFS.Price) DESC)AS SalesRank, COUNT(S.SupplierID)AS SalesCount,SUM(BFS.Price) AS TotalSales
+SELECT TOP(10) WITH TIES S.Name,ROW_NUMBER() OVER(ORDER BY SUM(BFS.Price) DESC)AS SalesRank, COUNT(S.SupplierID)AS SalesCount,SUM(BFS.Price) AS TotalSales,S.Email,S.SupplierType
 FROM Supplier S
 INNER JOIN BookForSale BFS ON BFS.SupplierID = S.SupplierID
 INNER JOIN Sales Sa ON Sa.BookForSaleID = BFS.BookForSaleID
-WHERE BFS.Avalible = 0 AND Sa.DatePurchased BETWEEN  DATEADD(MONTH, -@Month, GETDATE()) AND SYSDATETIMEOFFSET()  
-GROUP BY S.Name
+WHERE BFS.Avalible = 0 AND Sa.DatePurchased BETWEEN  DATEADD(MONTH, -3, GETDATE()) AND SYSDATETIMEOFFSET()  
+GROUP BY S.Name,S.Email,S.SupplierType
+ORDER BY SalesRank
 GO

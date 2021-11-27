@@ -4,3 +4,4 @@ AS
 SELECT *
 FROM Buyer B
 WHERE B.Email = @Email
+GO

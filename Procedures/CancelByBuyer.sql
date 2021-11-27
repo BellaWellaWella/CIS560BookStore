@@ -9,3 +9,4 @@ UPDATE BookForSale
 SET
 	Avalible = 1
 WHERE BookForSaleID = @ID
+GO

@@ -19,3 +19,4 @@ WHERE NOT EXISTS
 		FROM BookForSale BFS
 		WHERE BFS.BookID = Book.BookID
 	)
+GO

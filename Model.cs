@@ -350,5 +350,100 @@ namespace CIS560BookStore
             }
             return Books;
         }
+
+        public List<string[]> TopBuyer()
+        {
+            List<string[]> list = new List<string[]>();
+            using (var connection = new SqlConnection(connectionString))
+            {
+                using (var command = new SqlCommand("TopBuyer", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    connection.Open();
+                    using (var reader = command.ExecuteReader())
+                    {
+                        var getTotal = reader.GetOrdinal("Total");
+                        var getName = reader.GetOrdinal("Name");
+                        var getEmail = reader.GetOrdinal("Email");
+                        while (reader.Read())
+                        {
+                            string[] x = new string[3];
+                            double y = reader.GetDouble(getTotal);
+                            x[0] = y.ToString("0.00$");
+                            x[1] = reader.GetString(getName);
+                            x[2] = reader.GetString(getEmail);
+                            list.Add(x);
+                        }
+                        return list;
+                    }
+                }
+            }
+        }
+        public List<string[]> TopSupplier()
+        {
+            List<string[]> list = new List<string[]>();
+            using (var connection = new SqlConnection(connectionString))
+            {
+                using (var command = new SqlCommand("TopSupplier", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    connection.Open();
+                    using (var reader = command.ExecuteReader())
+                    {
+                        var getName = reader.GetOrdinal("Name");
+                        var getRank = reader.GetOrdinal("SalesRank");
+                        var getCount = reader.GetOrdinal("SalesCount");
+                        var getTotal = reader.GetOrdinal("TotalSales");
+                        var getEmail = reader.GetOrdinal("Email");
+                        var getType = reader.GetOrdinal("SupplierType");
+                        while (reader.Read())
+                        {
+                            string[] x = new string[6];
+                            double y = reader.GetDouble(getTotal);
+                            x[0] = reader.GetString(getName);
+                            x[0] = y.ToString("0.00$");
+                            x[1] = reader.GetString(getName);
+                            var rank = reader.GetInt64(getRank);
+                            x[2] = rank.ToString();
+                            var count = reader.GetInt32(getCount);
+                            x[3] = count.ToString();
+                            x[4] = reader.GetString(getEmail);
+                            x[5] = reader.GetString(getType);
+                            list.Add(x);
+                        }
+                        return list;
+                    }
+                }
+            }
+        }
+        public List<string[]> PopularGenre()
+        {
+            List<string[]> list = new List<string[]>();
+            using (var connection = new SqlConnection(connectionString))
+            {
+                using (var command = new SqlCommand("PopularGenre", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    connection.Open();
+                    using (var reader = command.ExecuteReader())
+                    {
+                        var getGenre = reader.GetOrdinal("Genre");
+                        var getRank = reader.GetOrdinal("GenreRank");
+                        var getCount = reader.GetOrdinal("SalesCount");
+                        while (reader.Read())
+                        {
+                            string[] x = new string[3];
+                            x[0] = reader.GetString(getGenre);
+                            var rank = reader.GetInt64(getRank);
+                            x[1] = rank.ToString();
+                            var count = reader.GetInt32(getCount);
+                            x[2] = count.ToString();
+                            list.Add(x);
+                        }
+                        return list;
+                    }
+                }
+            }
+        }
     }
 }

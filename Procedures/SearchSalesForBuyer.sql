@@ -7,3 +7,4 @@ INNER JOIN Buyer B ON B.BuyerID = Sa.BuyerID AND B.Email = @Email
 INNER JOIN BookForSale BFS ON BFS.BookForSaleID = Sa.BookForSaleID
 INNER JOIN Book book ON book.BookID = BFS.BookID
 INNER JOIN Supplier S ON S.SupplierID = BFS.SupplierID
+GO

@@ -11,3 +11,4 @@ SET
 	Address = @Address,
 	SupplierType = @SupplierType
 WHERE Email = @Email
+GO
