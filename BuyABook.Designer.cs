@@ -179,7 +179,7 @@ namespace CIS560BookStore
             // Book_Title
             // 
             this.Book_Title.Text = "Title";
-            this.Book_Title.Width = 82;
+            this.Book_Title.Width = 250;
             // 
             // Book_Author
             // 

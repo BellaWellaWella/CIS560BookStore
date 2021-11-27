@@ -179,6 +179,13 @@ namespace CIS560BookStore
             if (listView.SelectedItems.Count > 0)
             {
                 int z = listView.Items.IndexOf(listView.SelectedItems[0]);
+                if(order == Order.supplier)
+                {
+                    if(sales[z].Available == 0)
+                    {
+                        MessageBox.Show("Cannot cancel solded order.");return;
+                    }
+                }
                 int id = sales[z].SaleID;
                 con.CencelOrder(id, Email, order);
                 getInfo();
