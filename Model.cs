@@ -10,11 +10,18 @@ namespace CIS560BookStore
 {
     public class Model
     {
+        /// <summary>
+        /// the connection information for which database
+        /// </summary>
         private string connectionString;
         public Model(string connection)
         {
             this.connectionString = connection;
         }
+        /// <summary>
+        /// Update the Buyer infomation to database
+        /// </summary>
+        /// <param name="b">buyer infomation</param>
         public void UpdateBuyerinfo(Buyer b)
         {
             using (var transaction = new TransactionScope())
@@ -37,6 +44,11 @@ namespace CIS560BookStore
                 }
             }
         }
+        /// <summary>
+        /// Cencel the Oerder in database if it from a Supplier
+        /// </summary>
+        /// <param name="id">the BookForSalesID for the order</param>
+        /// <param name="email">the supplier email</param>
         public void CencelOerderBySupplier (int id, string email)
         {
             using (var transaction = new TransactionScope())
@@ -55,6 +67,10 @@ namespace CIS560BookStore
                 }
             }
         }
+        /// <summary>
+        /// Cencel the Oerder in database if it from a Buyer
+        /// </summary>
+        /// <param name="id">the BookForSalesID for the order</param>
         public void CencelOrderByBuyer(int id)
         {
             using (var transaction = new TransactionScope())
@@ -72,6 +88,10 @@ namespace CIS560BookStore
                 }
             }
         }
+        /// <summary>
+        /// Update the Supplier infomation to database
+        /// </summary>
+        /// <param name="s">the Supplier infomation</param>
         public void UpdateSupplierinfo(Supplier s)
         {
             using (var transaction = new TransactionScope())
@@ -95,6 +115,11 @@ namespace CIS560BookStore
                 }
             }
         }
+        /// <summary>
+        /// Search a buyer with their order in database by email
+        /// </summary>
+        /// <param name="Email">the buyer email</param>
+        /// <returns></returns>
         public Tuple<Buyer, List<Sales>> SearchBuyer(string Email)
         {
             List<Sales> sales = new List<Sales>();
@@ -156,6 +181,11 @@ namespace CIS560BookStore
                 }
             }
         }
+        /// <summary>
+        /// Search a Supplier with their order in database by email
+        /// </summary>
+        /// <param name="Email">the Supplier email</param>
+        /// <returns></returns>
         public Tuple<Supplier, List<Sales>> SearchSupplier(string Email)
         {
             List<Sales> sales = new List<Sales>();
@@ -217,6 +247,11 @@ namespace CIS560BookStore
                 }
             }
         }
+        /// <summary>
+        /// Add a new book for sale in database
+        /// </summary>
+        /// <param name="s">the supplier information</param>
+        /// <param name="b">the book information</param>
         public void SaleABook(Supplier s, Book b)
         {
             using (var transaction = new TransactionScope())
@@ -248,6 +283,14 @@ namespace CIS560BookStore
                 }
             }
         }
+        /// <summary>
+        /// buy a book in the database
+        /// </summary>
+        /// <param name="Name">the buyer name</param>
+        /// <param name="Email">the buyer email</param>
+        /// <param name="Address">the buyer address</param>
+        /// <param name="BookId">the BookForSalesID in the database</param>
+        /// <returns>a list of book after buy</returns>
         public List<Book> CreateASale(string Name, string Email, string Address, int BookId)
         {
             using (var transaction = new TransactionScope())
@@ -277,6 +320,10 @@ namespace CIS560BookStore
             }
             return RetrieveBooKForSales();
         }
+        /// <summary>
+        /// get the all books that available in the database
+        /// </summary>
+        /// <returns>a list of book that available in the database</returns>
         public List<Book> RetrieveBooKForSales()
         {
             using (var connection = new SqlConnection(connectionString))
@@ -290,6 +337,11 @@ namespace CIS560BookStore
                 }
             }
         }
+        /// <summary>
+        /// Search a book by title in the database
+        /// </summary>
+        /// <param name="Title">the book title </param>
+        /// <returns>a list of book that contain the input in the book title</returns>
         public List<Book> SearchABook(string Title)
         {
             using (var connection = new SqlConnection(connectionString))
@@ -315,6 +367,11 @@ namespace CIS560BookStore
                 }
             }
         }
+        /// <summary>
+        /// Translate all book information to list
+        /// </summary>
+        /// <param name="reader">the SQL reader</param>
+        /// <returns>the book list with information</returns>
         public List<Book> TranslateForSales(SqlDataReader reader)
         {
             var Books = new List<Book>();
@@ -350,7 +407,10 @@ namespace CIS560BookStore
             }
             return Books;
         }
-
+        /// <summary>
+        /// get the top Buyer report
+        /// </summary>
+        /// <returns>top Buyer report</returns>
         public List<string[]> TopBuyer()
         {
             List<string[]> list = new List<string[]>();
@@ -379,6 +439,10 @@ namespace CIS560BookStore
                 }
             }
         }
+        /// <summary>
+        /// get the top supplier report
+        /// </summary>
+        /// <returns>the top supplier report</returns>
         public List<string[]> TopSupplier()
         {
             List<string[]> list = new List<string[]>();
@@ -416,6 +480,10 @@ namespace CIS560BookStore
                 }
             }
         }
+        /// <summary>
+        /// get the Popular Genre report
+        /// </summary>
+        /// <returns>the Popular Genre report</returns>
         public List<string[]> PopularGenre()
         {
             List<string[]> list = new List<string[]>();

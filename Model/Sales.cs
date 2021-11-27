@@ -16,7 +16,13 @@ namespace CIS560BookStore
         public int SaleID { get; set; }
         public string Title { get; set; }
         public int Available { get; set; }
+        /// <summary>
+        /// which buyer bought this book
+        /// </summary>
         public Buyer buyer { get; set; }
+        /// <summary>
+        /// which suppiler supplier sold this book
+        /// </summary>
         public Supplier supplier { get; set; }
     }
 }
