@@ -203,7 +203,8 @@ namespace CIS560BookStore
             // 
             // columnTotal
             // 
-            this.columnTotal.Text = "Total";
+            this.columnTotal.Text = "TotalSpend";
+            this.columnTotal.Width = 97;
             // 
             // button_Buyer
             // 

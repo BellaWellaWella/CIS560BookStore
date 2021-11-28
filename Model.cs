@@ -509,7 +509,7 @@ namespace CIS560BookStore
                             x[1] = reader.GetString(getGenre);
                             var rank = reader.GetInt64(getRank);
                             x[0] = rank.ToString();
-                            var count = reader.GetInt32(getCount);
+                            var count = reader.IsDBNull(getCount) ? 0 : reader.GetInt32(getCount);
                             x[2] = count.ToString();
                             list.Add(x);
                         }
