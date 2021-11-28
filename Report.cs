@@ -29,8 +29,8 @@ namespace CIS560BookStore
             listView_Genre.Visible = false;
             listView_Supplier.Visible = false;
             listView_Year.Visible = false;
-            comboBox_Time.DataSource = new List<int>() {3,4,5,6,7,8,9,10,11,12};
-            label_info.Text = "Select how many months past reports";
+            comboBox_Time.DataSource = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
+            label_info.Text = "Select how many months accumulate\n           past reports";
             state = 1;
             button_Submit.Enabled = true;
         }
@@ -98,8 +98,8 @@ namespace CIS560BookStore
             listView_Genre.Visible = false;
             listView_Supplier.Visible = true;
             listView_Year.Visible = false;
-            comboBox_Time.DataSource = new List<int>() { 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 };
-            label_info.Text = "Select how many months past reports";
+            comboBox_Time.DataSource = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 };
+            label_info.Text = "Select how many months accumulate\n           past reports";
             state = 2;
             button_Submit.Enabled = true;
         }
@@ -110,8 +110,8 @@ namespace CIS560BookStore
             listView_Genre.Visible = true;
             listView_Supplier.Visible = false;
             listView_Year.Visible = false;
-            comboBox_Time.DataSource = new List<int>() { 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 };
-            label_info.Text = "Select how many months past reports";
+            comboBox_Time.DataSource = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 };
+            label_info.Text = "Select how many months accumulate\n           past reports";
             state = 3;
             button_Submit.Enabled = true;
         }
