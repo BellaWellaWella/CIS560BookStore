@@ -1,3 +1,6 @@
+--CREATE DATABASE BookShop;
+
+USE BookShop;
 --Genre Table
 
 CREATE TABLE Genre (GenreID INT NOT NULL IDENTITY(1, 1) PRIMARY KEY, Genre VARCHAR(128));
