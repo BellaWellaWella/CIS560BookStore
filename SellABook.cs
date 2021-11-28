@@ -97,6 +97,19 @@ namespace CIS560BookStore
                 if(con.Sell(s, b))
                 {
                     MessageBox.Show("The order successful created");
+                    textBox_name.Text = "";
+                    textBox_address.Text = "";
+                    textBox_email.Text = "";
+                    comboBox_supplierType.Text = "";
+                    textBox_bookTitle.Text = "";
+                    textBox_bookAuthor.Text = "";
+                    textBox_email.Text = "";
+                    textBox_ISBN.Text = "";
+                    textBox_email.Text = "";
+                    textBox_yearPublished.Text = "";
+                    comboBox_Genre.SelectedIndex = -1;
+                    textBox_bookPrice.Text = "";
+                    combo_Condition.SelectedIndex = -1;
                 }
             }
         }
