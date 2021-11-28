@@ -141,7 +141,7 @@ namespace CIS560BookStore
             // 
             // button_buyBook
             // 
-            this.button_buyBook.Location = new System.Drawing.Point(995, 296);
+            this.button_buyBook.Location = new System.Drawing.Point(997, 296);
             this.button_buyBook.Name = "button_buyBook";
             this.button_buyBook.Size = new System.Drawing.Size(133, 41);
             this.button_buyBook.TabIndex = 18;
@@ -299,7 +299,7 @@ namespace CIS560BookStore
             // 
             // button_Edit
             // 
-            this.button_Edit.Location = new System.Drawing.Point(1119, 18);
+            this.button_Edit.Location = new System.Drawing.Point(1069, 18);
             this.button_Edit.Name = "button_Edit";
             this.button_Edit.Size = new System.Drawing.Size(99, 30);
             this.button_Edit.TabIndex = 33;
@@ -311,7 +311,7 @@ namespace CIS560BookStore
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1250, 360);
+            this.ClientSize = new System.Drawing.Size(1205, 359);
             this.Controls.Add(this.button_Edit);
             this.Controls.Add(this.textBox_SupplierType);
             this.Controls.Add(this.textBox_SupplierEmail);

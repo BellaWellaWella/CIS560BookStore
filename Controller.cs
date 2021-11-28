@@ -119,26 +119,43 @@ namespace CIS560BookStore
         /// <summary>
         /// get the top buyer report
         /// </summary>
+        /// <param name="Month">How many Month want to past</param>
         /// <returns>the top buyer report</returns>
-        public List<string[]> TopBuyer()
+        public List<string[]> TopBuyer(int Month)
         {
-            return M.TopBuyer();
+            return M.TopBuyer(Month);
         }
         /// <summary>
         /// get the Popular Genre report
         /// </summary>
+        /// <param name="Month">How many Month want to past</param>
         /// <returns>the Popular Genre report</returns>
-        public List<string[]> PopularGenre()
+        public List<string[]> PopularGenre(int Month)
         {
-            return M.PopularGenre();
+            return M.PopularGenre(Month);
         }
         /// <summary>
         /// get the top supplier report
         /// </summary>
+        /// <param name="Month">How many Month want to past</param>
         /// <returns>the top supplier report</returns>
-        public List<string[]> TopSupplier()
+
+        public List<string[]> TopSupplier(int Month)
         {
-            return M.TopSupplier();
+            return M.TopSupplier(Month);
+        }
+        /// <summary>
+        /// get the yearly report
+        /// </summary>
+        /// <param name="Year">Which year want to report</param>
+        /// <returns>the yearly report</returns>
+        public List<string[]> YearlyReoprt(int Year)
+        {
+            return M.YearlyReoprt(Year);
+        }
+        public List<string> GetYear()
+        {
+            return M.GetYear();
         }
     }
 }

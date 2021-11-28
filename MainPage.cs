@@ -34,5 +34,12 @@ namespace CIS560BookStore
             this.Hide();
             sellABook.ShowDialog();
         }
+
+        private void button_Report_Click(object sender, EventArgs e)
+        {
+            Report report = new Report();
+            report.Controllerset(C);
+            report.ShowDialog();
+        }
     }
 }

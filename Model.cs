@@ -410,8 +410,9 @@ namespace CIS560BookStore
         /// <summary>
         /// get the top Buyer report
         /// </summary>
+        /// <param name="Month">How many Month want to past</param>
         /// <returns>top Buyer report</returns>
-        public List<string[]> TopBuyer()
+        public List<string[]> TopBuyer(int Month)
         {
             List<string[]> list = new List<string[]>();
             using (var connection = new SqlConnection(connectionString))
@@ -419,6 +420,7 @@ namespace CIS560BookStore
                 using (var command = new SqlCommand("TopBuyer", connection))
                 {
                     command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("MONTH", Month);
                     connection.Open();
                     using (var reader = command.ExecuteReader())
                     {
@@ -429,9 +431,9 @@ namespace CIS560BookStore
                         {
                             string[] x = new string[3];
                             double y = reader.GetDouble(getTotal);
-                            x[0] = y.ToString("0.00$");
-                            x[1] = reader.GetString(getName);
-                            x[2] = reader.GetString(getEmail);
+                            x[2] = y.ToString("0.00$");
+                            x[0] = reader.GetString(getName);
+                            x[1] = reader.GetString(getEmail);
                             list.Add(x);
                         }
                         return list;
@@ -442,8 +444,9 @@ namespace CIS560BookStore
         /// <summary>
         /// get the top supplier report
         /// </summary>
+        /// <param name="Month">How many Month want to past</param>
         /// <returns>the top supplier report</returns>
-        public List<string[]> TopSupplier()
+        public List<string[]> TopSupplier(int Month)
         {
             List<string[]> list = new List<string[]>();
             using (var connection = new SqlConnection(connectionString))
@@ -451,6 +454,7 @@ namespace CIS560BookStore
                 using (var command = new SqlCommand("TopSupplier", connection))
                 {
                     command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("MONTH", Month);
                     connection.Open();
                     using (var reader = command.ExecuteReader())
                     {
@@ -464,15 +468,14 @@ namespace CIS560BookStore
                         {
                             string[] x = new string[6];
                             double y = reader.GetDouble(getTotal);
-                            x[0] = reader.GetString(getName);
-                            x[0] = y.ToString("0.00$");
                             x[1] = reader.GetString(getName);
+                            x[4] = y.ToString("0.00$");
                             var rank = reader.GetInt64(getRank);
-                            x[2] = rank.ToString();
+                            x[0] = rank.ToString();
                             var count = reader.GetInt32(getCount);
-                            x[3] = count.ToString();
-                            x[4] = reader.GetString(getEmail);
-                            x[5] = reader.GetString(getType);
+                            x[5] = count.ToString();
+                            x[2] = reader.GetString(getEmail);
+                            x[3] = reader.GetString(getType);
                             list.Add(x);
                         }
                         return list;
@@ -483,8 +486,9 @@ namespace CIS560BookStore
         /// <summary>
         /// get the Popular Genre report
         /// </summary>
+        /// <param name="Month">How many Month want to past</param>
         /// <returns>the Popular Genre report</returns>
-        public List<string[]> PopularGenre()
+        public List<string[]> PopularGenre(int Month)
         {
             List<string[]> list = new List<string[]>();
             using (var connection = new SqlConnection(connectionString))
@@ -492,6 +496,7 @@ namespace CIS560BookStore
                 using (var command = new SqlCommand("PopularGenre", connection))
                 {
                     command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("MONTH", Month);
                     connection.Open();
                     using (var reader = command.ExecuteReader())
                     {
@@ -501,11 +506,117 @@ namespace CIS560BookStore
                         while (reader.Read())
                         {
                             string[] x = new string[3];
-                            x[0] = reader.GetString(getGenre);
+                            x[1] = reader.GetString(getGenre);
                             var rank = reader.GetInt64(getRank);
-                            x[1] = rank.ToString();
+                            x[0] = rank.ToString();
                             var count = reader.GetInt32(getCount);
                             x[2] = count.ToString();
+                            list.Add(x);
+                        }
+                        return list;
+                    }
+                }
+            }
+        }
+        /// <summary>
+        /// get the year have sales
+        /// </summary>
+        /// <returns>the year have sales</returns>
+        public List<string> GetYear()
+        {
+            List<string> list = new List<string>();
+            using (var connection = new SqlConnection(connectionString))
+            {
+                using (var command = new SqlCommand("AllYear", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    connection.Open();
+                    using (var reader = command.ExecuteReader())
+                    {
+                        var getYear = reader.GetOrdinal("Year");
+                        while (reader.Read())
+                        {
+                            int y = reader.GetInt32(getYear);
+                            list.Add(y.ToString());
+                        }
+                        return list;
+                    }
+                }
+            }
+        }
+        /// <summary>
+        /// get the yearly report
+        /// </summary>
+        /// <param name="Year">Which year want to report</param>
+        /// <returns>the yearly report</returns>
+        public List<string[]> YearlyReoprt(int Year)
+        {
+            List<string[]> list = new List<string[]>();
+            using (var connection = new SqlConnection(connectionString))
+            {
+                using (var command = new SqlCommand("YearlyReportByMonth", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("ReportYear", Year);
+                    connection.Open();
+                    using (var reader = command.ExecuteReader())
+                    {
+                        var getTotal = reader.GetOrdinal("TotalSales");
+                        var getSold = reader.GetOrdinal("BooksSold");
+                        var getAVG = reader.GetOrdinal("AveragePrice");
+                        var getMonth = reader.GetOrdinal("Monthly");
+                        while (reader.Read())
+                        {
+                            string[] x = new string[4];
+                            int month = reader.GetInt32(getMonth);
+                            switch (month)
+                            {
+                                case 1:
+                                    x[0] = "January";
+                                    break;
+                                case 2:
+                                    x[0] = "February";
+                                    break;
+                                case 3:
+                                    x[0] = "March";
+                                    break;
+                                case 4:
+                                    x[0] = "April";
+                                    break;
+                                case 5:
+                                    x[0] = "May";
+                                    break;
+                                case 6:
+                                    x[0] = "June";
+                                    break;
+                                case 7:
+                                    x[0] = "July";
+                                    break;
+                                case 8:
+                                    x[0] = "August";
+                                    break;
+                                case 9:
+                                    x[0] = "September";
+                                    break;
+                                case 10:
+                                    x[0] = "October";
+                                    break;
+                                case 11:
+                                    x[0] = "November";
+                                    break;
+                                case 12:
+                                    x[0] = "December";
+                                    break;
+                                case 0:
+                                    break;
+
+                            }
+                            double temp = reader.GetDouble(getTotal);
+                            x[1] = temp.ToString("0.00$");
+                            int temp2 = reader.GetInt32(getSold);
+                            x[2] = temp2.ToString();
+                            double temp3 = reader.GetDouble(getAVG);
+                            x[3] = temp3.ToString("0.00$");
                             list.Add(x);
                         }
                         return list;
