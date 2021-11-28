@@ -32,6 +32,7 @@ namespace CIS560BookStore
             comboBox_Time.DataSource = new List<int>() {3,4,5,6,7,8,9,10,11,12};
             label_info.Text = "Select how many months past reports";
             state = 1;
+            button_Submit.Enabled = true;
         }
 
         private void button_Submit_Click(object sender, EventArgs e)
@@ -100,6 +101,7 @@ namespace CIS560BookStore
             comboBox_Time.DataSource = new List<int>() { 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 };
             label_info.Text = "Select how many months past reports";
             state = 2;
+            button_Submit.Enabled = true;
         }
 
         private void button_Genre_Click(object sender, EventArgs e)
@@ -111,6 +113,7 @@ namespace CIS560BookStore
             comboBox_Time.DataSource = new List<int>() { 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 };
             label_info.Text = "Select how many months past reports";
             state = 3;
+            button_Submit.Enabled = true;
         }
 
         private void button_Year_Click(object sender, EventArgs e)
@@ -122,6 +125,7 @@ namespace CIS560BookStore
             comboBox_Time.DataSource = con.GetYear();
             label_info.Text = "Select which year reports";
             state = 4;
+            button_Submit.Enabled = true;
         }
     }
 }

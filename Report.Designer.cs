@@ -30,23 +30,25 @@ namespace CIS560BookStore
         private void InitializeComponent()
         {
             this.listView_Year = new System.Windows.Forms.ListView();
+            this.Month = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.YearlySales = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.BooksSold = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.AveragePrice = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.listView_Genre = new System.Windows.Forms.ListView();
+            this.GenreRank = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Genre = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.GenreCount = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.listView_Supplier = new System.Windows.Forms.ListView();
-            this.listView_Buyer = new System.Windows.Forms.ListView();
-            this.columnName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnEmail = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnTotal = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.SalesRank = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.SupplierName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SupplierEmail = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SupplierTpye = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SupplierTotalSales = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SalesCount = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.SalesRank = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.GenreRank = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Genre = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.GenreCount = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.YearlySales = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.BooksSold = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.AveragePrice = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.listView_Buyer = new System.Windows.Forms.ListView();
+            this.columnName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnEmail = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnTotal = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.button_Buyer = new System.Windows.Forms.Button();
             this.button_Supplier = new System.Windows.Forms.Button();
             this.button_Genre = new System.Windows.Forms.Button();
@@ -54,8 +56,6 @@ namespace CIS560BookStore
             this.comboBox_Time = new System.Windows.Forms.ComboBox();
             this.button_Submit = new System.Windows.Forms.Button();
             this.label_info = new System.Windows.Forms.Label();
-            this.SupplierName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Month = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // listView_Year
@@ -76,6 +76,25 @@ namespace CIS560BookStore
             this.listView_Year.View = System.Windows.Forms.View.Details;
             this.listView_Year.Visible = false;
             // 
+            // Month
+            // 
+            this.Month.Text = "Month";
+            // 
+            // YearlySales
+            // 
+            this.YearlySales.Text = "YearlySales";
+            this.YearlySales.Width = 89;
+            // 
+            // BooksSold
+            // 
+            this.BooksSold.Text = "BooksSold";
+            this.BooksSold.Width = 84;
+            // 
+            // AveragePrice
+            // 
+            this.AveragePrice.Text = "AveragePrice";
+            this.AveragePrice.Width = 84;
+            // 
             // listView_Genre
             // 
             this.listView_Genre.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
@@ -92,6 +111,21 @@ namespace CIS560BookStore
             this.listView_Genre.UseCompatibleStateImageBehavior = false;
             this.listView_Genre.View = System.Windows.Forms.View.Details;
             this.listView_Genre.Visible = false;
+            // 
+            // GenreRank
+            // 
+            this.GenreRank.Text = "GenreRank";
+            this.GenreRank.Width = 88;
+            // 
+            // Genre
+            // 
+            this.Genre.Text = "Genre";
+            this.Genre.Width = 94;
+            // 
+            // GenreCount
+            // 
+            this.GenreCount.Text = "GenreCount";
+            this.GenreCount.Width = 87;
             // 
             // listView_Supplier
             // 
@@ -112,6 +146,35 @@ namespace CIS560BookStore
             this.listView_Supplier.UseCompatibleStateImageBehavior = false;
             this.listView_Supplier.View = System.Windows.Forms.View.Details;
             this.listView_Supplier.Visible = false;
+            // 
+            // SalesRank
+            // 
+            this.SalesRank.Text = "Rank";
+            this.SalesRank.Width = 74;
+            // 
+            // SupplierName
+            // 
+            this.SupplierName.Text = "Name";
+            // 
+            // SupplierEmail
+            // 
+            this.SupplierEmail.Text = "Email";
+            this.SupplierEmail.Width = 95;
+            // 
+            // SupplierTpye
+            // 
+            this.SupplierTpye.Text = "SupplierTpye";
+            this.SupplierTpye.Width = 93;
+            // 
+            // SupplierTotalSales
+            // 
+            this.SupplierTotalSales.Text = "TotalSales";
+            this.SupplierTotalSales.Width = 78;
+            // 
+            // SalesCount
+            // 
+            this.SalesCount.Text = "SalesCount";
+            this.SalesCount.Width = 84;
             // 
             // listView_Buyer
             // 
@@ -141,61 +204,6 @@ namespace CIS560BookStore
             // columnTotal
             // 
             this.columnTotal.Text = "Total";
-            // 
-            // SupplierEmail
-            // 
-            this.SupplierEmail.Text = "Email";
-            this.SupplierEmail.Width = 95;
-            // 
-            // SupplierTpye
-            // 
-            this.SupplierTpye.Text = "SupplierTpye";
-            this.SupplierTpye.Width = 93;
-            // 
-            // SupplierTotalSales
-            // 
-            this.SupplierTotalSales.Text = "TotalSales";
-            this.SupplierTotalSales.Width = 78;
-            // 
-            // SalesCount
-            // 
-            this.SalesCount.Text = "SalesCount";
-            this.SalesCount.Width = 84;
-            // 
-            // SalesRank
-            // 
-            this.SalesRank.Text = "Rank";
-            this.SalesRank.Width = 74;
-            // 
-            // GenreRank
-            // 
-            this.GenreRank.Text = "GenreRank";
-            this.GenreRank.Width = 88;
-            // 
-            // Genre
-            // 
-            this.Genre.Text = "Genre";
-            this.Genre.Width = 94;
-            // 
-            // GenreCount
-            // 
-            this.GenreCount.Text = "GenreCount";
-            this.GenreCount.Width = 87;
-            // 
-            // YearlySales
-            // 
-            this.YearlySales.Text = "YearlySales";
-            this.YearlySales.Width = 89;
-            // 
-            // BooksSold
-            // 
-            this.BooksSold.Text = "BooksSold";
-            this.BooksSold.Width = 84;
-            // 
-            // AveragePrice
-            // 
-            this.AveragePrice.Text = "AveragePrice";
-            this.AveragePrice.Width = 84;
             // 
             // button_Buyer
             // 
@@ -247,6 +255,7 @@ namespace CIS560BookStore
             // 
             // button_Submit
             // 
+            this.button_Submit.Enabled = false;
             this.button_Submit.Location = new System.Drawing.Point(598, 260);
             this.button_Submit.Name = "button_Submit";
             this.button_Submit.Size = new System.Drawing.Size(77, 41);
@@ -262,14 +271,6 @@ namespace CIS560BookStore
             this.label_info.Name = "label_info";
             this.label_info.Size = new System.Drawing.Size(0, 12);
             this.label_info.TabIndex = 10;
-            // 
-            // SupplierName
-            // 
-            this.SupplierName.Text = "Name";
-            // 
-            // Month
-            // 
-            this.Month.Text = "Month";
             // 
             // Report
             // 
