@@ -96,9 +96,9 @@ namespace CIS560BookStore
         /// </summary>
         /// <param name="s">the supplier informaiton</param>
         /// <param name="b">the book information</param>
-        public void Sell(Supplier s, Book b) 
+        public bool Sell(Supplier s, Book b) 
         {
-            M.SaleABook(s, b);
+            return M.SaleABook(s, b);
         }
         /// <summary>
         /// Search a book by title in the database

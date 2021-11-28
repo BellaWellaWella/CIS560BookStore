@@ -92,9 +92,12 @@ namespace CIS560BookStore
                     return;
                 }
                 b.GenreID = comboBox_Genre.SelectedIndex + 1;
-                b.price = textBox_bookPrice.Text + "$";
+                b.price = Convert.ToDouble(textBox_bookPrice.Text);
                 b.ConditionID = combo_Condition.SelectedIndex + 1;
-                con.Sell(s, b);
+                if(con.Sell(s, b))
+                {
+                    MessageBox.Show("The order successful created");
+                }
             }
         }
 

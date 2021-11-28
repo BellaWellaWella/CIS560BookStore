@@ -252,7 +252,7 @@ namespace CIS560BookStore
         /// </summary>
         /// <param name="s">the supplier information</param>
         /// <param name="b">the book information</param>
-        public void SaleABook(Supplier s, Book b)
+        public bool SaleABook(Supplier s, Book b)
         {
             using (var transaction = new TransactionScope())
             {
@@ -274,11 +274,15 @@ namespace CIS560BookStore
                         command.Parameters.AddWithValue("Price", b.price);
                         command.Parameters.AddWithValue("Avalible", 1);
 
-                        connection.Open();
+                        try{
+                            connection.Open();
 
-                        command.ExecuteNonQuery();
+                            command.ExecuteNonQuery();
 
-                        transaction.Complete();
+                            transaction.Complete();
+                            return true;
+                        }catch(Exception e) { MessageBox.Show(e.ToString()); return false; }
+                        
                     }
                 }
             }
@@ -394,7 +398,7 @@ namespace CIS560BookStore
                 book.Author = reader.GetString(getAuthor);
                 book.YearPublished = reader.GetInt32(getYearPublished);
                 double x = reader.GetDouble(getPrice);
-                book.price = x.ToString("0.00$");   
+                book.price = x;
                 book.ISBN = reader.GetString(getISBN);
                 book.Genre = reader.GetString(getGenre);
                 book.Condition = reader.GetString(getCondition);

@@ -10,11 +10,20 @@ CREATE OR ALTER PROCEDURE CreateASupplier
 	@GenreID INT, 
 	@ConditionID INT,
 	@Price NVARCHAR(64) ,
-	@Avalible BIT 
+	@Avalible BIT
 AS 
 
-INSERT Supplier([Name], [Address], Email, SupplierType)
-VALUES(@Name,@Address,@Email,@SupplierType);
+MERGE Supplier S
+USING(VALUES(@Email))SE (Email) ON SE.Email = S.Email
+WHEN MATCHED THEN
+	UPDATE
+	SET
+		Name = @Name,
+	    Address = @Address,
+		SupplierType = @SupplierType
+WHEN NOT MATCHED THEN
+	INSERT ([Name], [Address], Email, SupplierType)
+	VALUES(@Name,@Address,@Email,@SupplierType);
 
 MERGE Book B
 USING
@@ -30,5 +39,6 @@ INSERT BookForSale(BookID,SupplierID,Price,ConditionID,Avalible)
 SELECT B.BookID,S.SupplierID,@Price,@ConditionID,@Avalible
 FROM Supplier S,Book B
 WHERE S.Email =@Email AND B.ISBN = @ISBN;
+
 GO
 

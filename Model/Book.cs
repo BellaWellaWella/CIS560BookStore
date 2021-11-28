@@ -21,7 +21,7 @@ namespace CIS560BookStore
         /// the GenreID in the database
         /// </summary>
         public int GenreID { get; set; }
-        public string price { get; set; }
+        public double price { get; set; }
         public string Condition { get; set; }
         /// <summary>
         /// the ConditionID in the database
