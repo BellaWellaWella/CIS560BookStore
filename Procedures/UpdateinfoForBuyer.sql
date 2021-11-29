@@ -1,3 +1,4 @@
+-- Updates Name or address for buyer based on email
 CREATE OR ALTER PROCEDURE UpdateinfoForBuyer
 	@Email NVARCHAR(64),
 	@Name  NVARCHAR(64),

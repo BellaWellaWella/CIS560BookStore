@@ -1,3 +1,5 @@
+-- Updates Name, supplier type or address for supplier based on email
+
 CREATE OR ALTER PROCEDURE UpdateinfoForSupplier
 	@Email NVARCHAR(64),
 	@Name  NVARCHAR(64),

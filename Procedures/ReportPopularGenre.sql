@@ -1,3 +1,4 @@
+-- Gives the full report for the most popular genres for the past X months based on the variable chosen by user
 CREATE OR ALTER PROCEDURE PopularGenre
 	@MONTH INT
 AS

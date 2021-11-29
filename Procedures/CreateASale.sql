@@ -1,3 +1,4 @@
+-- Creates a sale purchased by the buyer
 CREATE OR ALTER PROCEDURE CreateASale
    	@Name NVARCHAR(64),
 	@Email NVARCHAR(128), 

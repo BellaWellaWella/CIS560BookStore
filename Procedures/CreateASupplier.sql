@@ -1,3 +1,4 @@
+-- Creates a book avalible for sale made by the supplier along with the supplier
 CREATE OR ALTER PROCEDURE CreateASupplier
    	@Name NVARCHAR(64),
 	@Email NVARCHAR(128), 

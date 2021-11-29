@@ -1,3 +1,4 @@
+-- Searches for a avalible book based on a variable the user provides that the title matches or contains
 CREATE OR ALTER PROCEDURE SearchBook
    	@Title NVARCHAR(64)
 AS

@@ -1,3 +1,5 @@
+-- Displays the top buyer based on amount of money spent
+
 CREATE OR ALTER PROCEDURE TopBuyer
 	@MONTH INT
 AS

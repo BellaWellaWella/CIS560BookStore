@@ -1,3 +1,4 @@
+-- Reports Sales, number of books sold, and average price for each month depending on year entered
 CREATE OR ALTER PROCEDURE YearlyReportByMonth
 	@ReportYear INT
 AS

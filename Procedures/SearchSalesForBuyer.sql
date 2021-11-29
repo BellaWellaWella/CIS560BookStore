@@ -1,3 +1,4 @@
+-- Searches all the sales for who bought them, and returns all sales from buyer who's email matches variable
 CREATE OR ALTER PROCEDURE SearchSalesForBuyer
 	@Email NVARCHAR(64)
 AS

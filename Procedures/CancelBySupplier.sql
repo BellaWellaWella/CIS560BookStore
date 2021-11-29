@@ -1,3 +1,4 @@
+-- Cancels the order on the supplier side
 CREATE OR ALTER PROCEDURE CancelBySupplier
 	@ID INT,
 	@Email NVARCHAR(64)

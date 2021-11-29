@@ -1,3 +1,4 @@
+-- Reports the top supplier based on profit made
 CREATE OR ALTER PROCEDURE TopSupplier
 	@MONTH INT
 AS

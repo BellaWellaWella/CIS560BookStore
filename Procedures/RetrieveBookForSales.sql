@@ -1,3 +1,4 @@
+-- Gets a list of all books avalible for sale
 CREATE OR ALTER PROCEDURE RetrieveBookForSales
 AS
 

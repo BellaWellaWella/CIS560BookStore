@@ -1,3 +1,4 @@
+-- Cancels the order on the buyer side
 CREATE OR ALTER PROCEDURE CancelByBuyer
 	@ID INT
 AS
