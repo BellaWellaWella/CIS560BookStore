@@ -12,8 +12,8 @@ namespace CIS560BookStore
 {
     public partial class Report : Form
     {
-        Controller con;
-        int state;
+        private Controller con;
+        private int state;
         public Report()
         {
             InitializeComponent();
